@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.blaasoft</groupId>
-    <artifactId>scell</artifactId>
+    <artifactId>units</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>Scala cells</name>
+    <name>Scala units libary</name>
 
     <dependencies>
         <dependency>
@@ -16,11 +16,7 @@
             <version>2.10.0-M6</version>
         </dependency>
         
-        <dependency>
-			<groupId>org.scala-tools</groupId>
-			<artifactId>time</artifactId>
-			<version>2.7.4-0.1</version>
-		</dependency>
+  
         
     </dependencies>
 
