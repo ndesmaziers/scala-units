@@ -24,7 +24,8 @@ object Test {
     println(AtomicUnit.meter / AtomicUnit.meter)
     
     // Base units
-     println(AtomicUnit.second.toBaseUnit)
+    println(AtomicUnit.second.toBaseUnit)
+    println(AtomicUnit.minute.toBaseUnit)
   }
 
 }
