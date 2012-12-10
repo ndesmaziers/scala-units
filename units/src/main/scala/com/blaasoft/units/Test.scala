@@ -26,6 +26,7 @@ object Test {
     // Base units
     println(AtomicUnit.second.toBaseUnit)
     println(AtomicUnit.minute.toBaseUnit)
+    println(AtomicUnit.hour.toBaseUnit)
   }
 
 }

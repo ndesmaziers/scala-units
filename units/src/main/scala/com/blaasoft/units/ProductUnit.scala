@@ -46,7 +46,7 @@ class ProductUnit(val product: List[Annotated], val factor: Double = 1.0) extend
   }
 
   override def toBaseUnit(): ProductUnit = {
-    null
+    this
   }
 
   override def toString(): String = {
