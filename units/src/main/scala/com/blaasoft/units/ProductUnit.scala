@@ -46,7 +46,15 @@ class ProductUnit(val product: List[Annotated], val factor: Double = 1.0) extend
   }
 
   override def toBaseUnit(): ProductUnit = {
-    this
+    var _product:List[Annotated] = List()
+    var _factor = this.factor;
+    for(annotated <- product) { // should not loose power here
+    	val equivalentUnit:ProductUnit = annotated.unit.toBaseUnit;
+    	_product = ProductUnit.concat(_product, equivalentUnit.product)
+    	_factor *= equivalentUnit.factor
+    }
+    
+    new ProductUnit(_product, _factor)
   }
 
   override def toString(): String = {
@@ -68,6 +76,8 @@ class ProductUnit(val product: List[Annotated], val factor: Double = 1.0) extend
 }
 
 class Annotated(val unit: SimpleUnit, val power: Integer) {
+  
+  
   override def toString(): String = {
     if (power == 1) unit.toString() else unit.toString() + "^" + power;
   }
