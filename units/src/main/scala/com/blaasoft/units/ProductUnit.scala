@@ -37,8 +37,15 @@ class ProductUnit(val product: List[Annotated], val factor: Double = 1.0) extend
   def *(other: Unit) = {
     other match {
       case su: SimpleUnit => new ProductUnit(ProductUnit.append(new Annotated(su, 1), product))
-      case pu: ProductUnit => new ProductUnit(ProductUnit.concat(product, pu.product))
+      case pu: ProductUnit => new ProductUnit(ProductUnit.concat(product, pu.product), factor * pu.factor)
     }
+  }
+  
+  def ^ (power:Integer):Unit = {
+    new ProductUnit(
+    	for(annotaded <- product) yield annotaded.power(power),
+    	Math.pow(factor, power.doubleValue())
+    	)
   }
 
   def inverse(): Unit = {
@@ -83,6 +90,8 @@ class Annotated(val unit: SimpleUnit, val power: Integer) {
   }
 
   def inverse(): Annotated = new Annotated(unit, -power)
+  
+  def power(value:Integer): Annotated = new Annotated(unit, power * value)
 
   // merging two annotated with the same unit
   def *(other: Annotated): Annotated = {

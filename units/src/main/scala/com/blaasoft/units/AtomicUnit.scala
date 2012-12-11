@@ -9,9 +9,16 @@ object AtomicUnit  {
    
    // Intcust units
    val n_mi = new AtomicUnit("[nmi_i]", "nautical mile", "n.mi", false, new ProductUnit(meter, 1, 1852))
+   val knot = new AtomicUnit("[kn_i]", "knot", "knot", false, n_mi / hour)
 }
 
 class AtomicUnit(val code:String, val name:String, val printSymbol:String, val isBaseUnit:Boolean, val value:ProductUnit) extends SimpleUnit {
+  
+  def this(code:String, name:String, printSymbol:String, isBaseUnit:Boolean, value:Unit) = 
+    this(code, name, printSymbol, isBaseUnit, value match {
+      case pu:ProductUnit => pu
+      case su:SimpleUnit => new ProductUnit(su)
+    })
 
   override def toBaseUnit(): ProductUnit = {
     if(isBaseUnit)
@@ -20,6 +27,6 @@ class AtomicUnit(val code:String, val name:String, val printSymbol:String, val i
       value.toBaseUnit()
   }
   
-  override def toString() = code
+  override def toString() = printSymbol
   
 }

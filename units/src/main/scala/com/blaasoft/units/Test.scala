@@ -31,6 +31,13 @@ object Test {
     // 
     println(AtomicUnit.n_mi.toBaseUnit)
     println(AtomicUnit.n_mi.toBaseUnit / AtomicUnit.meter)
+    println(AtomicUnit.knot)
+    println(AtomicUnit.knot.toBaseUnit)
+    
+    // Test on power
+    println(AtomicUnit.meter ^ 2)
+    println(AtomicUnit.knot ^ 2)
+    println(CommonUnits.meter_per_second ^ 2)
   }
 
 }
