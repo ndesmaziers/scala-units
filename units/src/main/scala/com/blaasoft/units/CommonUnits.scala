@@ -5,4 +5,5 @@ object CommonUnits {
 	
 	// Speed
 	val meter_per_second = AtomicUnit.meter / AtomicUnit.second
+	val kilometer_per_hour = kilometer / AtomicUnit.hour
 }

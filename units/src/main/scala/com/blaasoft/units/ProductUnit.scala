@@ -56,7 +56,7 @@ class ProductUnit(val product: List[Annotated], val factor: Double = 1.0) extend
     var _product:List[Annotated] = List()
     var _factor = this.factor;
     for(annotated <- product) { // should not loose power here
-    	val equivalentUnit:ProductUnit = annotated.unit.toBaseUnit;
+    	val equivalentUnit:ProductUnit = (annotated.unit.toBaseUnit ^ annotated.power).asInstanceOf[ProductUnit];
     	_product = ProductUnit.concat(_product, equivalentUnit.product)
     	_factor *= equivalentUnit.factor
     }

@@ -23,21 +23,24 @@ object Test {
     println(AtomicUnit.meter / AtomicUnit.second)
     println(AtomicUnit.meter / AtomicUnit.meter)
     
-    // Base units
-    println(AtomicUnit.second.toBaseUnit)
-    println(AtomicUnit.minute.toBaseUnit)
-    println(AtomicUnit.hour.toBaseUnit)
+    
     
     // 
     println(AtomicUnit.n_mi.toBaseUnit)
     println(AtomicUnit.n_mi.toBaseUnit / AtomicUnit.meter)
     println(AtomicUnit.knot)
-    println(AtomicUnit.knot.toBaseUnit)
     
     // Test on power
     println(AtomicUnit.meter ^ 2)
     println(AtomicUnit.knot ^ 2)
     println(CommonUnits.meter_per_second ^ 2)
+    
+    // Base units
+    println(AtomicUnit.second.toBaseUnit)
+    println(AtomicUnit.minute.toBaseUnit)
+    println(AtomicUnit.hour.toBaseUnit)
+    println(AtomicUnit.knot.toBaseUnit)
+    println(CommonUnits.kilometer.toBaseUnit)
   }
 
 }
