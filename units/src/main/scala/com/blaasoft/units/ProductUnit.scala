@@ -51,6 +51,10 @@ class ProductUnit(val product: List[Annotated], val factor: Double = 1.0) extend
   def inverse(): Unit = {
     new ProductUnit(ProductUnit.inverseProductList(product), 1.0 / factor)
   }
+  
+  def *(other: Double) = {
+    new ProductUnit(product, factor * other)
+  }
 
   override def toBaseUnit(): ProductUnit = {
     var _product:List[Annotated] = List()
@@ -82,9 +86,7 @@ class ProductUnit(val product: List[Annotated], val factor: Double = 1.0) extend
   }
 }
 
-class Annotated(val unit: SimpleUnit, val power: Integer) {
-  
-  
+class Annotated(val unit: SimpleUnit, val power: Integer) { 
   override def toString(): String = {
     if (power == 1) unit.toString() else unit.toString() + "^" + power;
   }

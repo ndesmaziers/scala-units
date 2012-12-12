@@ -9,5 +9,8 @@ object Prefix {
 }
 
 class Prefix(val code:String, val name:String, val printSymbol:String, val exponent:Integer) {
+  
+	def doubleValue:Double = Math.pow(10.0, exponent.doubleValue())
+  
 	override def toString() = printSymbol
 }

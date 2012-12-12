@@ -23,7 +23,9 @@ object Test {
     println(AtomicUnit.meter / AtomicUnit.second)
     println(AtomicUnit.meter / AtomicUnit.meter)
     
-    
+    // Test with prefixed units
+    println("km^2 = " + CommonUnits.kilometer * CommonUnits.kilometer)
+    println("ONE = " + CommonUnits.kilometer / CommonUnits.kilometer)
     
     // 
     println(AtomicUnit.n_mi.toBaseUnit)
