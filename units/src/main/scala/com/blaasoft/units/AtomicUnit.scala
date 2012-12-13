@@ -19,7 +19,7 @@ class AtomicUnit(val code:String, val name:String, val printSymbol:String, val i
       case pu:ProductUnit => pu
       case su:SimpleUnit => new ProductUnit(su)
     })
-
+    
   override def toBaseUnit(): ProductUnit = {
     if(isBaseUnit)
       new ProductUnit(this)
