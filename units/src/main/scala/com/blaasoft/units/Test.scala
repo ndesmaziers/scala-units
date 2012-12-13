@@ -43,6 +43,9 @@ object Test {
     println(AtomicUnit.hour.toBaseUnit)
     println(AtomicUnit.knot.toBaseUnit)
     println(CommonUnits.kilometer.toBaseUnit)
+    
+    // Other
+    println(AtomicUnit.knot.dimension)
   }
 
 }

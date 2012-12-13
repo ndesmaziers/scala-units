@@ -8,4 +8,5 @@ abstract class Unit {
 	def ^ (power:Integer):Unit
 	def inverse():Unit
 	def toBaseUnit():ProductUnit;
+	def dimension:Dimension;
 }
