@@ -14,15 +14,19 @@ object AtomicUnit  {
    val knot = new AtomicUnit("[kn_i]", "knot", "knot", false, Dimension.L/Dimension.T , new Value(1.0, n_mi / hour))
 
    val degree_Celsius = new AtomicUnit("Cel", "degree Celsius", "°C", false, Dimension.C , new Value(1.0, 273.15, Kelvin))
+   val degree_Fahrenheit = new AtomicUnit("[degF]", "degree Fahrenheit", "°F", false, Dimension.C , new Value(5.0/9.0, 459.67 * (5.0/9.0), Kelvin))
 }
 
 class AtomicUnit(val code:String, val name:String, val printSymbol:String, val isBaseUnit:Boolean, val dimension:Dimension, val value:Value) extends SimpleUnit {
   
-  override def toBaseUnit(): ProductUnit = {
+  override def toBaseUnit(): Value = {
     if(isBaseUnit)
-      new ProductUnit(this)
-    else
-      value.unit.toBaseUnit()
+      new Value(1.0, new ProductUnit(this))
+    else {
+      val baseUnitValue:Value = value.unit.toBaseUnit()
+      new Value(baseUnitValue.unit, value.value * baseUnitValue.value)
+    }
+      
   }
   
   override def toString() = printSymbol

@@ -1,7 +1,7 @@
 package com.blaasoft.units
 
 class PrefixedUnit(val prefix: Prefix, val unit: AtomicUnit) extends SimpleUnit {
-  override def toBaseUnit(): ProductUnit = {
+  override def toBaseUnit(): Value = {
     unit.toBaseUnit * prefix.doubleValue
   }
   

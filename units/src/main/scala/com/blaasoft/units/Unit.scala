@@ -4,15 +4,14 @@ package com.blaasoft.units
 
 abstract class Unit {
 	def * (other:Unit):Unit
-	def / (other:Unit):Unit = this * other.inverse()
+	def / (other:Unit):Unit = this * (other ^ -1)
 	def ^ (power:Integer):Unit
-	def inverse():Unit
-	def toBaseUnit():ProductUnit;
+	def toBaseUnit():Value;
 	def dimension:Dimension;
 	
 	def convert(other:Unit): Double => Double = {
-	  val factor:Double = (this.toBaseUnit / other.toBaseUnit).asInstanceOf[ProductUnit].factor;
+	  val factor:Value = toBaseUnit / other.toBaseUnit;
 
-	  x => factor * x
+	  factor.value
 	}
 }

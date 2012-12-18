@@ -3,58 +3,57 @@ package com.blaasoft.units
 object Test {
 
   def main(args: Array[String]): scala.Unit = {
-    /*
-    println(CommonUnits.kilometer)
-    println(AtomicUnit.second)
-    println(AtomicUnit.minute)
-    println(AtomicUnit.hour)
-    println(CommonUnits.meter_per_second)
     
-    // Inversion tests
-    println(AtomicUnit.meter.inverse())				// AtomicUnit 
-    println(CommonUnits.kilometer.inverse())		// Prefixed unit
+    println(new Measure(20, AtomicUnit.degree_Celsius).to(AtomicUnit.degree_Fahrenheit))
+
+       
+    println("Printing simple units")
+    println("km        = " + CommonUnits.kilometer)
+    println("s         = " + AtomicUnit.second)
+    println("min       = " + AtomicUnit.minute)
+    println("h         = " + AtomicUnit.hour)
     
-    // Multiplication tests
-    println(AtomicUnit.meter* AtomicUnit.second)
-    println(AtomicUnit.meter* AtomicUnit.meter)
-    println(AtomicUnit.meter* AtomicUnit.meter * AtomicUnit.second)
-    println(AtomicUnit.meter* AtomicUnit.second * AtomicUnit.meter)
+    println("Multiplication tests")
+    println("m*s       = " + AtomicUnit.meter* AtomicUnit.second)
+    println("m^2       = " + AtomicUnit.meter* AtomicUnit.meter)
+    println("m^2*s     = " + AtomicUnit.meter* AtomicUnit.meter * AtomicUnit.second)
+    println("m^2*s     = " + AtomicUnit.meter* AtomicUnit.second * AtomicUnit.meter)
+    println()
     
-    // Division tests
+    println("Division tests")
     println(AtomicUnit.meter / AtomicUnit.second)
     println(AtomicUnit.meter / AtomicUnit.meter)
+    println()
     
-    // Test with prefixed units
+    println("Tests with prefixed units")
     println("km^2 = " + CommonUnits.kilometer * CommonUnits.kilometer)
     println("ONE = " + CommonUnits.kilometer / CommonUnits.kilometer)
-    
-    // 
-    println(AtomicUnit.n_mi.toBaseUnit)
-    println(AtomicUnit.n_mi.toBaseUnit / AtomicUnit.meter)
-    println(AtomicUnit.knot)
+    println()
+ 
     
     // Test on power
     println(AtomicUnit.meter ^ 2)
     println(AtomicUnit.knot ^ 2)
     println(CommonUnits.meter_per_second ^ 2)
+    println()
     
-    // Base units
+    println("Get base units")
     println(AtomicUnit.second.toBaseUnit)
     println(AtomicUnit.minute.toBaseUnit)
     println(AtomicUnit.hour.toBaseUnit)
     println(AtomicUnit.knot.toBaseUnit)
     println(CommonUnits.kilometer.toBaseUnit)
+    println()
+  
     
-    // Other
-    println(AtomicUnit.knot.dimension)
-    */
     // Measure conversions
     println(new Measure(20, AtomicUnit.knot))
     println(new Measure(20, AtomicUnit.knot).to(CommonUnits.kilometer_per_hour))
     
     
-    
-    //println(new Measure(20, AtomicUnit.degree_Celsius).to(AtomicUnit.Kelvin))
+    println(AtomicUnit.degree_Celsius.toBaseUnit)
+    println(new Measure(20, AtomicUnit.degree_Celsius).to(AtomicUnit.Kelvin))
+    println(new Measure(20, AtomicUnit.degree_Celsius).to(AtomicUnit.degree_Fahrenheit))
   }
 
 }

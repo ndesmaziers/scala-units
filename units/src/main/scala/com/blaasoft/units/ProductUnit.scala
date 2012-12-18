@@ -30,49 +30,45 @@ object ProductUnit {
   }
 }
 
-class ProductUnit(val product: List[Annotated], val dimension:Dimension, val factor: Double) extends Unit {
+class ProductUnit(val product: List[Annotated], val dimension:Dimension) extends Unit {
 
-  def this(su: SimpleUnit, power: Integer = 1, factor: Double = 1.0) = this(List(new Annotated(su, power)), su.dimension, factor)
+  def this(su: SimpleUnit, power: Integer = 1) = this(List(new Annotated(su, power)), su.dimension)
 
   def *(other: Unit) = {
     other match {
-      case su: SimpleUnit => new ProductUnit(ProductUnit.append(new Annotated(su, 1), product), dimension * su.dimension, 1.0)
-      case pu: ProductUnit => new ProductUnit(ProductUnit.concat(product, pu.product), dimension * pu.dimension, factor * pu.factor)
+      case su: SimpleUnit => new ProductUnit(ProductUnit.append(new Annotated(su, 1), product), dimension * su.dimension)
+      case pu: ProductUnit => new ProductUnit(ProductUnit.concat(product, pu.product), dimension * pu.dimension)
     }
   }  
   
   def ^ (power:Integer):Unit = {
     new ProductUnit(
     	for(annotaded <- product) yield annotaded.power(power),
-    	dimension ^ power,
-    	Math.pow(factor, power.doubleValue())
-    	)
+    	dimension ^ power)
   }
 
   def inverse(): Unit = {
-    new ProductUnit(ProductUnit.inverseProductList(product), dimension ^ (-1), 1.0 / factor)
+    new ProductUnit(ProductUnit.inverseProductList(product), dimension ^ (-1))
   }
   
   def *(other: Double) = {
-    new ProductUnit(product, dimension, factor * other)
+    new ProductUnit(product, dimension)
   }
   
-  override def toBaseUnit(): ProductUnit = {
+  override def toBaseUnit(): Value = {
     var _product:List[Annotated] = List()
-    var _factor = this.factor;
+    var _factor:AffineFunction = new AffineFunction(1.0, 0.0)
     for(annotated <- product) {
-    	val equivalentUnit:ProductUnit = (annotated.unit.toBaseUnit ^ annotated.power).asInstanceOf[ProductUnit];
-    	_product = ProductUnit.concat(_product, equivalentUnit.product)
-    	_factor *= equivalentUnit.factor
+    	val value:Value = (annotated.unit.toBaseUnit ^ annotated.power);
+    	_product = ProductUnit.concat(_product, value.unit.product)
+    	_factor *= (value.value ^ annotated.power)
     }
     
-    new ProductUnit(_product, dimension,  _factor)
+    new Value(new ProductUnit(_product, dimension), _factor)
   }
 
   override def toString(): String = {
     val builder: StringBuilder = new StringBuilder();
-
-    if (factor != 1.0 || product == List()) builder.append(factor)
 
     var firstIteration: Boolean = true
     for (item: Annotated <- product) {

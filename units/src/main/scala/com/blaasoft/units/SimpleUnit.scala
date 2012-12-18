@@ -8,8 +8,4 @@ abstract class SimpleUnit extends Unit {
   def ^ (power:Integer):Unit = {
     new ProductUnit(this) ^ power
   }
-
-  override def inverse(): Unit = {
-    new ProductUnit(this, -1)
-  }
 }
