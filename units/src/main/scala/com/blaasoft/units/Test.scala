@@ -3,6 +3,7 @@ package com.blaasoft.units
 object Test {
 
   def main(args: Array[String]): scala.Unit = {
+    /*
     println(CommonUnits.kilometer)
     println(AtomicUnit.second)
     println(AtomicUnit.minute)
@@ -46,12 +47,14 @@ object Test {
     
     // Other
     println(AtomicUnit.knot.dimension)
-    
+    */
     // Measure conversions
     println(new Measure(20, AtomicUnit.knot))
     println(new Measure(20, AtomicUnit.knot).to(CommonUnits.kilometer_per_hour))
     
-    println(new Measure(20, AtomicUnit.knot).to(CommonUnits.kilometer_per_hour))
+    
+    
+    //println(new Measure(20, AtomicUnit.degree_Celsius).to(AtomicUnit.Kelvin))
   }
 
 }
