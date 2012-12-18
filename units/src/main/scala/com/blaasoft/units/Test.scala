@@ -50,6 +50,8 @@ object Test {
     // Measure conversions
     println(new Measure(20, AtomicUnit.knot))
     println(new Measure(20, AtomicUnit.knot).to(CommonUnits.kilometer_per_hour))
+    
+    println(new Measure(20, AtomicUnit.knot).to(CommonUnits.kilometer_per_hour))
   }
 
 }

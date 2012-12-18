@@ -9,4 +9,10 @@ abstract class Unit {
 	def inverse():Unit
 	def toBaseUnit():ProductUnit;
 	def dimension:Dimension;
+	
+	def convert(other:Unit): Double => Double = {
+	  val factor:Double = (this.toBaseUnit / other.toBaseUnit).asInstanceOf[ProductUnit].factor;
+
+	  x => factor * x
+	}
 }
