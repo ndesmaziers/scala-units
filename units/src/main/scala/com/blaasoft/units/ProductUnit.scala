@@ -55,11 +55,11 @@ class ProductUnit(val product: List[Annotated], val dimension:Dimension) extends
     new ProductUnit(product, dimension)
   }
   
-  override def toBaseUnit(): Value = {
+  override def toBaseValue(): Value = {
     var _product:List[Annotated] = List()
     var _factor:AffineFunction = new AffineFunction(1.0, 0.0)
     for(annotated <- product) {
-    	val value:Value = (annotated.unit.toBaseUnit ^ annotated.power);
+    	val value:Value = (annotated.unit.toBaseValue ^ annotated.power);
     	_product = ProductUnit.concat(_product, value.unit.product)
     	_factor *= (value.value ^ annotated.power)
     }

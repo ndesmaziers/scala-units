@@ -19,11 +19,11 @@ object AtomicUnit  {
 
 class AtomicUnit(val code:String, val name:String, val printSymbol:String, val isBaseUnit:Boolean, val dimension:Dimension, val value:Value) extends SimpleUnit {
   
-  override def toBaseUnit(): Value = {
+  override def toBaseValue(): Value = {
     if(isBaseUnit)
       new Value(1.0, new ProductUnit(this))
     else {
-      val baseUnitValue:Value = value.unit.toBaseUnit()
+      val baseUnitValue:Value = value.unit.toBaseValue()
       new Value(baseUnitValue.unit, value.value * baseUnitValue.value)
     }
       

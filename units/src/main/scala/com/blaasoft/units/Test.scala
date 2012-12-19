@@ -38,11 +38,11 @@ object Test {
     println()
     
     println("Get base units")
-    println(AtomicUnit.second.toBaseUnit)
-    println(AtomicUnit.minute.toBaseUnit)
-    println(AtomicUnit.hour.toBaseUnit)
-    println(AtomicUnit.knot.toBaseUnit)
-    println(CommonUnits.kilometer.toBaseUnit)
+    println(AtomicUnit.second.toBaseValue)
+    println(AtomicUnit.minute.toBaseValue)
+    println(AtomicUnit.hour.toBaseValue)
+    println(AtomicUnit.knot.toBaseValue)
+    println(CommonUnits.kilometer.toBaseValue)
     println()
   
     
@@ -51,7 +51,7 @@ object Test {
     println(new Measure(20, AtomicUnit.knot).to(CommonUnits.kilometer_per_hour))
     
     
-    println(AtomicUnit.degree_Celsius.toBaseUnit)
+    println(AtomicUnit.degree_Celsius.toBaseValue)
     println(new Measure(20, AtomicUnit.degree_Celsius).to(AtomicUnit.Kelvin))
     println(new Measure(20, AtomicUnit.degree_Celsius).to(AtomicUnit.degree_Fahrenheit))
   }
