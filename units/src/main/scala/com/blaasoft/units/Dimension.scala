@@ -1,6 +1,7 @@
 package com.blaasoft.units
 
 object Dimension {
+  val ZERO = new Dimension(0,0,0,0,0,0,0)
   val L = new Dimension(1,0,0,0,0,0,0)
   val T = new Dimension(0,1,0,0,0,0,0)
   val M = new Dimension(0,0,1,0,0,0,0)

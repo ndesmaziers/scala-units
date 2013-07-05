@@ -30,24 +30,24 @@ object ProductUnit {
   }
 }
 
-class ProductUnit(val product: List[Annotated], val dimension:Dimension) extends Unit {
+class ProductUnit(val product: List[Annotated], val dimension:Dimension) extends BUnit {
 
   def this(su: SimpleUnit, power: Integer = 1) = this(List(new Annotated(su, power)), su.dimension)
 
-  def *(other: Unit) = {
+  def *(other: BUnit) = {
     other match {
       case su: SimpleUnit => new ProductUnit(ProductUnit.append(new Annotated(su, 1), product), dimension * su.dimension)
       case pu: ProductUnit => new ProductUnit(ProductUnit.concat(product, pu.product), dimension * pu.dimension)
     }
   }  
   
-  def ^ (power:Integer):Unit = {
+  def ^ (power:Integer):BUnit = {
     new ProductUnit(
     	for(annotaded <- product) yield annotaded.power(power),
     	dimension ^ power)
   }
 
-  def inverse(): Unit = {
+  def inverse(): BUnit = {
     new ProductUnit(ProductUnit.inverseProductList(product), dimension ^ (-1))
   }
   
