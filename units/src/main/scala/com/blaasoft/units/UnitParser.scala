@@ -16,7 +16,7 @@ class UnitParser {
       case "minute" => Some(AtomicUnit.minute)
       case "second" => Some(AtomicUnit.second)
         
-      case _ => None
+      case _ => throw new IllegalArgumentException("Cannot parse unit " + expression)
     }
   }
 }

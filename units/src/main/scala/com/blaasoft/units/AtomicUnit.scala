@@ -34,6 +34,6 @@ class AtomicUnit(val code:String, val name:String, val printSymbol:String, val i
       
   }
   
-  override def toString() = printSymbol
+  override def toString() = name
   
 }
